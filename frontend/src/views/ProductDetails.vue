@@ -26,9 +26,9 @@
           <p>In Stock: {{product.product_details.instock}}</p>
         </div>
         <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-primary">Keep shopping</button>
-          <button type="button" class="btn btn-primary">Add to Cart</button>
-          <button type="button" class="btn btn-primary">Checkout</button>
+          <router-link to="/" type="button" class="btn btn-primary">Keep shopping</router-link>
+          <button @click="addToCart" type="button" class="btn btn-primary">Add to Cart</button>
+          <router-link to="/checkout" type="button" class="btn btn-primary">Checkout</router-link>
         </div>
       </div>
     </div>
@@ -58,6 +58,14 @@
 <script>
 export default {
   props: ["id"],
+  methods: {
+    addToCart() {
+      this.$store.dispatch("addToCart", {
+        product: this.product,
+        quantity: 1,
+      });
+    },
+  },
   computed: {
     product() {
       return this.$store.state.products.product;

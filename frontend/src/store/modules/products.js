@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import Products from '../../api/Products'
 const state = {
     products: [],
@@ -7,7 +7,7 @@ const state = {
 }
 
 const getters = {
-    getItemsInCart() {
+    getNumItemsInCart() {
         return state.cart.length
     },
     cartTotalPrice() {
@@ -18,7 +18,8 @@ const getters = {
         })
 
         return total
-    }
+    },
+
 }
 
 const actions = {
@@ -31,18 +32,21 @@ const actions = {
 
     },
     getProduct: ({ commit }, id) => {
-        axios.get(`http://localhost:4000/products/${id}`)
+        Products.singleProduct(id)
             .then(resp => {
                 // console.log(resp.data)
                 commit('SET_PRODUCT', resp.data)
             })
     },
     addToCart: ({ commit }, { product, quantity }) => {
-        console.log(product, quantity)
+        // console.log(product, quantity)
         commit('ADD_TO_CART', { product, quantity })
     },
     removeProduct({ commit }, product) {
         commit('REMOVE_PRODUCT', product)
+    },
+    increaseItemQty({ commit }, { product, quantity }) {
+        commit('INCREASE_QTY', { product, quantity })
     },
     clearCart: ({ commit }) => {
         commit('EMPTY_CART')
@@ -62,6 +66,15 @@ const mutations = {
             return
         }
         state.cart.push(data)
+    },
+    INCREASE_QTY: (state, { product, quantity }) => {
+        // console.log('DATA', state.cart[0], product.id, quantity)
+        let prodQty = state.cart.find(prod => {
+            return prod.id === product.id
+        })
+
+        console.log(prodQty)
+
     },
     REMOVE_PRODUCT: (state, data) => {
         state.cart = state.cart.filter((item) => {

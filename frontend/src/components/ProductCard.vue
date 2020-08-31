@@ -25,8 +25,7 @@ export default {
   },
   methods: {
     addToCart() {
-      console.log(this.product);
-      // this.quantity += 1;
+      // console.log(this.product);
       this.$store.dispatch("addToCart", {
         product: this.product,
         quantity: 1,

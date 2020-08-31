@@ -64,7 +64,7 @@ export default {
       return this.$store.state.products.cart;
     },
     itemsInCart() {
-      return this.$store.getters.getItemsInCart;
+      return this.$store.getters.getNumItemsInCart;
     },
     totalPrice() {
       return this.$store.getters.cartTotalPrice;

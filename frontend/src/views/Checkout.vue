@@ -4,57 +4,33 @@
       <div class="col-md-8">
         <h3 class="mb-4">Your Order Breakdown</h3>
         <hr />
-        <div class="d-flex product-wrap mb-3">
+        <div
+          v-for="product in allProductsInCart"
+          :key="product.id"
+          class="d-flex product-wrap mb-3"
+        >
           <div class="product-img">
-            <img src="https://via.placeholder.com/150x150" alt />
+            <!-- <img :src="product.images.medium" /> -->
           </div>
           <div class="product-details d-flex align-items-center">
-            <div class="product-name">Gucci Watch</div>
+            <div class="product-name">{{product.name}}</div>
             <div class="product-quantity d-flex">
               <span class="minus">-</span>
-              <span class="quantity">8</span>
-              <span class="plus">+</span>
+              <span class="quantity">{{product.quantity}}</span>
+              <span @click="increaseQty(product)" class="plus">+</span>
               <div class="sub-total">$2000</div>
             </div>
           </div>
         </div>
 
-        <div class="d-flex product mb-3">
-          <div class="product-img">
-            <img src="https://via.placeholder.com/150x150" alt />
-          </div>
-          <div class="product-details d-flex align-items-center">
-            <div class="product-name">Gucci Watch</div>
-            <div class="product-quantity d-flex">
-              <span class="minus">-</span>
-              <span class="quantity">8</span>
-              <span class="plus">+</span>
-              <div class="sub-total">$2000</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex product mb-3">
-          <div class="product-img">
-            <img src="https://via.placeholder.com/150x150" alt />
-          </div>
-          <div class="product-details d-flex align-items-center">
-            <div class="product-name">Gucci Watch</div>
-            <div class="product-quantity d-flex">
-              <span class="minus">-</span>
-              <span class="quantity">8</span>
-              <span class="plus">+</span>
-              <div class="sub-total">$2000</div>
-            </div>
-          </div>
-        </div>
         <!-- total subtotal -->
         <div class="row">
           <div class="col-6"></div>
           <div class="col-6">
             <div class="totals">
-              <h3>Sub Total : $4020</h3>
-              <h2>Total: $7500</h2>
+              <h3>Sub Total : ${{totalPrice}}</h3>
+              <h3>Delivery : $0</h3>
+              <h2>Total: ${{totalPrice}}</h2>
             </div>
           </div>
         </div>
@@ -120,7 +96,11 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Confirm Order</button>
+            <router-link
+              to="/message"
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+            >Confirm Order</router-link>
           </div>
         </div>
       </div>
@@ -129,7 +109,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    allProductsInCart() {
+      return this.$store.state.products.cart;
+    },
+    totalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
+  },
+  methods: {
+    increaseQty(a) {
+      this.$store.dispatch("increaseItemQty", a);
+      console.log(a);
+    },
+  },
+};
 </script>
 
 <style scoped>
