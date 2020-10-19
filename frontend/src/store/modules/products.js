@@ -2,15 +2,20 @@
 import Products from '../../api/Products'
 const state = {
     products: [],
-    product: null,
     cart: []
 }
 
 const getters = {
-    getNumItemsInCart() {
+    allItems(state){
+        return state.products
+    },
+    productDetails: (state) =>(id)=>{
+        return state.products.find(p => p.id === id)
+    },
+    getNumItemsInCart(state) {
         return state.cart.length
     },
-    cartTotalPrice() {
+    cartTotalPrice(state) {
         let total = 0
 
         state.cart.forEach(item => {
@@ -23,13 +28,11 @@ const getters = {
 }
 
 const actions = {
-    getProducts: ({ commit }) => {
-        Products.all()
-            .then(resp => {
-                // console.log(resp.data)
-                commit('SET_PRODUCTS', resp.data)
+    getProducts: ({ commit }, params) => {
+        Products.all(params)
+            .then(data => {
+                commit('SET_PRODUCTS', data)
             })
-
     },
     getProduct: ({ commit }, id) => {
         Products.singleProduct(id)
@@ -67,7 +70,7 @@ const mutations = {
         }
         state.cart.push(data)
     },
-    INCREASE_QTY: (state, { product, quantity }) => {
+    INCREASE_QTY: (state, { product }) => {
         // console.log('DATA', state.cart[0], product.id, quantity)
         let prodQty = state.cart.find(prod => {
             return prod.id === product.id

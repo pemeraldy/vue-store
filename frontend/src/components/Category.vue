@@ -5,25 +5,45 @@
     </div>
     <div class="card-body">
       <div class="list-group">
-        <a href="#" class="bg-dark text-white list-group-item list-group-item-action">
-          <i class="fas fa-air-freshener"></i> Latest
-        </a>
-        <a href="#" class="bg-dark text-white list-group-item list-group-item-action">
-          <i class="fa fa-child" aria-hidden="true"></i> Children
-        </a>
-        <a href="#" class="bg-dark text-white list-group-item list-group-item-action">Smart</a>
-
-        <a href="#" class="bg-dark text-white list-group-item list-group-item-action">Digital</a>
-
-        <a href="#" class="bg-dark text-white list-group-item list-group-item-action">Analogue</a>
+        <router-link
+          :to="{ name: 'store', query: { ...$route.query, category: cat } }"
+          href="#"
+          exact
+          v-for="cat in categories"
+          :class="{
+            active:
+              !!$route.query.category && $route.query.category.includes(cat),
+          }"
+          class="bg-dark text-white list-group-item list-group-item-action"
+          :key="cat"
+          >{{ capitalize(cat) }}</router-link
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import API from "@/api/Products";
+const capitalize = (str = "") => str.charAt(0).toUpperCase() + str.slice(1);
+export default {
+  data() {
+    return {
+      categories: [],
+    };
+  },
+  async created() {
+    const data = await API.categories();
+    this.categories = data;
+  },
+  methods: {
+    capitalize,
+  },
+};
 </script>
 
-<style>
+<style scoped>
+.active {
+  opacity: 0.5;
+}
 </style>

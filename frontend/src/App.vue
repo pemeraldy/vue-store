@@ -14,12 +14,6 @@ export default {
   components: {
     Navbar,
   },
-  mounted() {
-    // fetch('http://localhost:4000/products')
-    // .then(resp=>resp.json())
-    // .then(data => console.log(data))
-  },
 };
 </script>
-<style>
-</style>
+<style></style>

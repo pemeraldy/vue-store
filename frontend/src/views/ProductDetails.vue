@@ -19,16 +19,22 @@
       </div>
       <div class="col-md-6 mt-5">
         <div class="product-info">
-          <h4>{{product.name}}</h4>
-          <p>Price: ${{product.unit_price}}</p>
-          <p>Weight: {{product.product_details.weight}}</p>
-          <p>Material: {{product.product_details.material}}</p>
-          <p>In Stock: {{product.product_details.instock}}</p>
+          <h4>{{ product.name }}</h4>
+          <p>Price: ${{ product.unit_price }}</p>
+          <p>Weight: {{ product.product_details.weight }}</p>
+          <p>Material: {{ product.product_details.material }}</p>
+          <p>In Stock: {{ product.product_details.instock }}</p>
         </div>
         <div class="d-flex justify-content-between">
-          <router-link to="/" type="button" class="btn btn-primary">Keep shopping</router-link>
-          <button @click="addToCart" type="button" class="btn btn-primary">Add to Cart</button>
-          <router-link to="/checkout" type="button" class="btn btn-primary">Checkout</router-link>
+          <router-link to="/" type="button" class="btn btn-primary"
+            >Keep shopping</router-link
+          >
+          <button @click="addToCart" type="button" class="btn btn-primary">
+            Add to Cart
+          </button>
+          <router-link to="/checkout" type="button" class="btn btn-primary"
+            >Checkout</router-link
+          >
         </div>
       </div>
     </div>
@@ -37,17 +43,12 @@
       <div class="col-12">
         <h3 class="text-center mb-3">Other Related Products</h3>
         <div class="related-products d-flex w-100 justify-content-between">
-          <div class="related-product">
-            <img src="https://via.placeholder.com/150x150" alt />
-          </div>
-          <div class="related-product">
-            <img src="https://via.placeholder.com/150x150" alt />
-          </div>
-          <div class="related-product">
-            <img src="https://via.placeholder.com/150x150" alt />
-          </div>
-          <div class="related-product">
-            <img src="https://via.placeholder.com/150x150" alt />
+          <div
+            class="related-product"
+            v-for="related of relatedProducts"
+            :key="related.id"
+          >
+            <img :src="related.images.medium" alt />
           </div>
         </div>
       </div>
@@ -56,8 +57,15 @@
 </template>
 
 <script>
+import API from "../api/Products";
+
 export default {
   props: ["id"],
+  data() {
+    return {
+      relatedProducts: [],
+    };
+  },
   methods: {
     addToCart() {
       this.$store.dispatch("addToCart", {
@@ -66,16 +74,24 @@ export default {
       });
     },
   },
+  beforeRouteEnter(_, from, next) {
+    if (!from.name) {
+      return next("/");
+    }
+    next();
+  },
   computed: {
     product() {
-      return this.$store.state.products.product;
+      return this.$store.getters[`productDetails`](this.id);
     },
   },
-  mounted() {
-    this.$store.dispatch("getProduct", this.id);
+  created() {
+    API.all({ category: this.product.categories.join(",") }).then(
+      (products) => (this.relatedProducts = products.slice(0, 4)),
+      console.warn
+    );
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

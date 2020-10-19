@@ -1,9 +1,8 @@
 {
   "products": [
     {
-      "id": "O9WZASwRpTVzE5E5ftKUd",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
+      "name": "Apple Watch Band Apple Watch 4 Digital",
+      "brand": "apple",
       "images": {
         "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
@@ -11,29 +10,30 @@
       },
       "categories": [
         "adults",
-        "analogue",
-        "women"
+        "smartwatches",
+        "digital",
+        "analogue"
       ],
-      "gender": "female",
-      "unit_price": 20000,
+      "gender": "unisex",
+      "unit_price": "7000",
       "product_details": {
         "instock": 20,
-        "weight": "0.4g",
+        "weight": "12g",
         "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
+        "variation": [],
         "colors": [
-          "yelloq",
-          "blue"
+          "green",
+          "yellow",
+          "blue",
+          "purple",
+          "silver",
+          "gold"
         ]
       }
     },
     {
-      "id": "GYC-GBwdpHIAjURuMatK_",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
+      "name": "Men Women Silicone Watch Band Outdoor Wristwatch Strap Replacement For Apple Watch DJA99",
+      "brand": "apple",
       "images": {
         "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
@@ -41,29 +41,27 @@
       },
       "categories": [
         "adults",
-        "analogue",
-        "women"
+        "smartwatches",
+        "digital",
+        "analogue"
       ],
-      "gender": "female",
-      "unit_price": 20000,
+      "gender": "unisex",
+      "unit_price": "8760",
       "product_details": {
         "instock": 20,
         "weight": "0.4g",
         "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
+        "variation": [],
         "colors": [
-          "yelloq",
+          "white",
           "blue"
         ]
-      }
+      },
+      "id": "3SBW64GEY-gWFQ-lzSQVe"
     },
     {
-      "id": "espHClB4ds2iRLkaK_ijA",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
+      "name": "G Style Shock Alike Waterproof Outdoor Sports Watches Men",
+      "brand": "G shock",
       "images": {
         "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
@@ -71,29 +69,25 @@
       },
       "categories": [
         "adults",
-        "analogue",
-        "women"
+        "digital"
       ],
-      "gender": "female",
-      "unit_price": 20000,
+      "gender": "male",
+      "unit_price": "1870",
       "product_details": {
         "instock": 20,
         "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
+        "material": "Resin",
+        "variation": [],
         "colors": [
-          "yelloq",
+          "white",
           "blue"
         ]
-      }
+      },
+      "id": "pOTJio809jzfONnRiNQkI"
     },
     {
-      "id": "JwN3BsCTlUo3MkigVD25x",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
+      "name": "Watches Men",
+      "brand": "G shock",
       "images": {
         "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
@@ -101,264 +95,56 @@
       },
       "categories": [
         "adults",
-        "analogue",
-        "women"
+        "digital"
       ],
-      "gender": "female",
-      "unit_price": 20000,
+      "gender": "male",
+      "unit_price": "1870",
       "product_details": {
         "instock": 20,
         "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
+        "material": "Resin",
+        "variation": [],
         "colors": [
-          "yelloq",
+          "white",
           "blue"
         ]
-      }
+      },
+      "id": "BXaLVAPFdyWSgo4uS0eIO"
     },
     {
-      "id": "k_GcSDsdXcXG0arrCS766",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
+      "name": "Hublot Dives",
+      "brand": "Hublot",
       "images": {
         "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
         "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
       },
       "categories": [
-        "adults",
-        "analogue",
-        "women"
+        "adults"
       ],
-      "gender": "female",
-      "unit_price": 20000,
+      "gender": "male",
+      "unit_price": "1870",
       "product_details": {
         "instock": 20,
         "weight": "0.4g",
-        "material": "rubber",
+        "material": "Resin",
         "variation": [
-          "pink",
-          "black"
+          "black",
+          "Metal"
         ],
         "colors": [
-          "yelloq",
+          "white",
           "blue"
         ]
-      }
-    },
-    {
-      "id": "t2Ok0BniaAVBrXunRNp4S",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
       },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "X2eAlIP2d5fpHkoiIBa3S",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "_gR_CFEmblMfNgvwk58k1",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "sIuliKIxhGZ-8aELyoPMp",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "X-PlxPoa0_A3pVn-XAkc2",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "WfaSy5Zgl0DtDNLA8EkAr",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
-    },
-    {
-      "id": "bTBvFwaZ1z-WlHsy_0Vlc",
-      "name": "women-s-casio-baby-g-pink-digital-sport",
-      "brand": "casio",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "adults",
-        "analogue",
-        "women"
-      ],
-      "gender": "female",
-      "unit_price": 20000,
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [
-          "pink",
-          "black"
-        ],
-        "colors": [
-          "yelloq",
-          "blue"
-        ]
-      }
+      "id": "0ApLQ-S7pQEdXiQ8Zlq9z"
     }
+  ],
+  "categories": [
+    "adults",
+    "children",
+    "smartwatches",
+    "digital",
+    "analogue"
   ]
 }

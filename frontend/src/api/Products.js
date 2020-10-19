@@ -1,10 +1,15 @@
 import Api from './Api'
 
+const pickData = (res) => res.data
+
 export default {
-    all() {
-        return Api.get('products')
+    async categories() {
+        return Api.get('categories').then(pickData)
     },
-    singleProduct(id) {
-        return Api.get(`products/${id}`)
+   async all(params) {
+        return Api.get('products', {params}).then(pickData)
+    },
+   async singleProduct(id) {
+        return Api.get(`products/${id}`).then(pickData)
     }
 }
