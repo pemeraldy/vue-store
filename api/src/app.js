@@ -30,12 +30,20 @@ app.get("/", (req, res) => {
 app.get("/products", (req, res) => {
     let data = [];
     let query = db.get("products");
-
-    let { category, sort } = req.query;
+    console.log(req.query)
+    let { category,sort,gender } = req.query;
     if (category) {
         categories = category.split(",");
         query = query.filter((item) => {
             let intersection = _.intersection(item.categories, categories);
+            return intersection.length > 0;
+        });
+    }
+
+    if (gender) {
+        genders = gender.split(",");
+        query = query.filter((item) => {
+            let intersection = _.intersection(item.genders, genders);
             return intersection.length > 0;
         });
     }
@@ -62,6 +70,7 @@ app.post("/products", (req, res) => {
         .write()
     res.json({ success: true })
 })
+
 app.get("/products/:id", (req, res) => {
     const data = db
         .get("products")

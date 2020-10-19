@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     addToCart() {
-      this.quantity += 1;
+      // console.log(this.product);
       this.$store.dispatch("addToCart", {
         product: this.product,
-        quantity: this.quantity,
+        quantity: 1,
       });
     },
   },

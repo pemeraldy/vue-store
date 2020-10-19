@@ -1,26 +1,27 @@
 <template>
-  <div class="d-flex flex-wrap jusify-content-center">
-    <ProductCard v-for="product in products" :key="product.id" :product="product" />
+  <div class="d-flex flex-wrap jusify-content-center ml-n4">
+    <ProductCard
+      class="ml-4"
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
   </div>
 </template>
 
 <script>
 import ProductCard from "./ProductCard";
-// import { mapActions } from "vuex";
 export default {
-  components: {
-    ProductCard,
-  },
-  computed: {
-    products() {
-      return this.$store.state.products.products;
+  props: {
+    products: {
+      type: Array,
+      default: () => [],
     },
   },
-  mounted() {
-    this.$store.dispatch("getProducts");
+  components: {
+    ProductCard,
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
