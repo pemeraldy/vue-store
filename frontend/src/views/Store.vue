@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <loading :isLoading="isLoading" />
+    <loading :isLoading="!this.$store.state.products" />
     <div class="row">
       <!-- category and others -->
       <div class="col-md-3">
@@ -70,13 +70,7 @@ export default {
   },
   methods: {
     fetchProducts(query) {
-      this.isLoading = true;
-      try {
-        this.$store.dispatch(`getProducts`, query);
-        this.isLoading = false;
-      } catch (error) {
-        console.log(error);
-      }
+      this.$store.dispatch(`getProducts`, query);
     },
     handleSort(sortBy) {
       this.$router.push({

@@ -12,7 +12,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .loading-wrap {
   position: absolute;
   width: 100%;

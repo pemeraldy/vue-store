@@ -21,7 +21,9 @@
 
 <script>
 export default {
-  props: ["product"],
+  props: {
+    product: {},
+  },
   data() {
     return {
       quantity: 0,
@@ -35,6 +37,11 @@ export default {
         quantity: 1,
       });
     },
+  },
+  async mounted() {
+    await this.$store
+      .dispatch(`getProducts`, this.product.id)
+      .then(() => console.log);
   },
 };
 </script>

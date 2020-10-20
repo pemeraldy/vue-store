@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="product">
+  <div class="container" v-if="!!product">
     <div class="row">
       <div class="col-md-6">
         <div class="product-wrap">
