@@ -13,7 +13,9 @@ const getters = {
         return state.products.find(p => p.id === id)
     },
     getNumItemsInCart(state) {
-        return state.cart.length
+        let itemsInCart = 0
+         state.cart.forEach(item => itemsInCart += item.quantity)
+         return itemsInCart
     },
     cartTotalPrice(state) {
         let total = 0

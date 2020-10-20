@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <loading :isLoading="isLoading" />
     <div class="row">
       <!-- category and others -->
       <div class="col-md-3">
@@ -30,13 +31,14 @@
 
 <script>
 // @ is an alias to /src
-// import Navbar from "@/components/Navbar";
+import Loading from "@/components/Loading";
 import Category from "@/components/Category";
 // import Brands from "@/components/Brands";
 import ProductLists from "@/components/ProductLists";
 export default {
   name: "Home",
   components: {
+    Loading,
     // Navbar,
     Category,
     // Brands,
@@ -45,6 +47,7 @@ export default {
   data() {
     return {
       sort: "low_to_high",
+      isLoading: false,
     };
   },
   computed: {
@@ -67,7 +70,13 @@ export default {
   },
   methods: {
     fetchProducts(query) {
-      this.$store.dispatch(`getProducts`, query);
+      this.isLoading = true;
+      try {
+        this.$store.dispatch(`getProducts`, query);
+        this.isLoading = false;
+      } catch (error) {
+        console.log(error);
+      }
     },
     handleSort(sortBy) {
       this.$router.push({
