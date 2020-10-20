@@ -20,7 +20,9 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link" to="/checkout">Checkout</router-link>
+          <router-link :class="{ disabled: $store.getters['isCartEmpty'] }" class="nav-link" to="/checkout"
+            >Checkout</router-link
+          >
         </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link">About</router-link>
@@ -35,13 +37,12 @@
 </template>
 
 <script>
-import NavCart from "@/components/NavCart";
+import NavCart from '@/components/NavCart'
 export default {
   components: {
     NavCart,
   },
-};
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

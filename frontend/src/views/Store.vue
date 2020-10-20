@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <loading :isLoading="!this.$store.state.products" />
+    <loading :isLoading="$store.getters['isLoadingProducts']" />
     <div class="row">
       <!-- category and others -->
       <div class="col-md-3">
@@ -31,12 +31,12 @@
 
 <script>
 // @ is an alias to /src
-import Loading from "@/components/Loading";
-import Category from "@/components/Category";
+import Loading from '@/components/Loading'
+import Category from '@/components/Category'
 // import Brands from "@/components/Brands";
-import ProductLists from "@/components/ProductLists";
+import ProductLists from '@/components/ProductLists'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Loading,
     // Navbar,
@@ -46,38 +46,40 @@ export default {
   },
   data() {
     return {
-      sort: "low_to_high",
+      sort: 'low_to_high',
       isLoading: false,
-    };
+    }
   },
   computed: {
     products() {
-      return this.$store.getters[`allItems`];
+      return this.$store.getters[`allItems`]
     },
   },
   watch: {
-    "$route.query": {
+    '$route.query': {
       handler(query) {
-        this.fetchProducts(query);
+        this.fetchProducts(query)
       },
     },
     sort(val) {
-      this.handleSort(val);
+      this.handleSort(val)
     },
   },
   created() {
-    this.fetchProducts(this.$route.query);
+    if(!this.products.length){
+    this.fetchProducts(this.$route.query)
+    }
   },
   methods: {
     fetchProducts(query) {
-      this.$store.dispatch(`getProducts`, query);
+      this.$store.dispatch(`getProducts`, query)
     },
     handleSort(sortBy) {
       this.$router.push({
-        name: "store",
+        name: 'store',
         query: { ...this.$route.query, sort: sortBy },
-      });
+      })
     },
   },
-};
+}
 </script>

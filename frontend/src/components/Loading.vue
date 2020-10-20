@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .loading-wrap {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;

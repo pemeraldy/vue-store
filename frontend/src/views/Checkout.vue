@@ -4,23 +4,16 @@
       <div class="col-md-8">
         <h3 class="mb-4">Your Order Breakdown</h3>
         <hr />
-        <div
-          v-for="product in allProductsInCart"
-          :key="product.id"
-          class="d-flex product-wrap mb-3"
-        >
-          <div class="product-img">
+        <div v-for="product in allProductsInCart" :key="product.id" class="d-flex product-wrap mb-3 justify-between">
+          <div class="product-img w-50">
             <img :src="product.product.images.medium" />
           </div>
           <div class="product-details d-flex align-items-center">
-            <div class="product-name">{{ product.name }}</div>
-            <div class="product-quantity d-flex">
-              <span @click="decreaseQty(product)" class="minus">-</span>
+            <!-- <div class="product-name">{{ product.name }}</div> -->
+            <div class="product-quantity d-flex align-items-center ">
+              <button @click="decreaseQty(product)" class="minus">&minus;</button>
               <span class="quantity">{{ product.quantity }}</span>
-              <span @click="increaseQty(product)" class="p-4 primary plus"
-                >+</span
-              >
-              <div class="sub-total">TODO:SUBTOTAL</div>
+              <button @click="increaseQty(product)" class=" primary plus">&plus;</button>
             </div>
           </div>
         </div>
@@ -49,72 +42,54 @@
             <h3 class="card-title text-center">Billing Details</h3>
           </div>
           <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="userDetails.name"
+                aria-describedby="name"
+                placeholder=" Your Name"
+              />
+            </div>
             <div class="details">
-              <h5 class="text-white">Address Details</h5>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-              <hr />
-              <h5 class="text-white">Delivery Method</h5>
               <div class="form-group">
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="DoorDelivery"
-                    name="delivery"
-                    class="custom-control-input"
-                    checked
-                  />
-                  <label class="custom-control-label" for="DoorDelivery">
-                    Door Delivery for
-                    <span class="badge badge-pill badge-warning">$20</span>
-                  </label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="pickUp"
-                    name="delivery"
-                    class="custom-control-input"
-                  />
-                  <label class="custom-control-label" for="pickUp">
-                    Or pickup at the
-                    <i class="fas fa-chair-office"></i>office
-                  </label>
-                </div>
+                <label for="exampleInputEmail1">Phone Number</label>
+                <input type="email" class="form-control" v-model="userDetails.number" placeholder="Your Number" />
               </div>
-              <hr />
-              <h5 class="text-white">Payment Method</h5>
               <div class="form-group">
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="cardPayment"
-                    name="payment"
-                    class="custom-control-input"
-                    checked
-                  />
-                  <label class="custom-control-label" for="cardPayment"
-                    >Cards</label
-                  >
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="payOnDelivery"
-                    name="payment"
-                    class="custom-control-input"
-                  />
-                  <label class="custom-control-label" for="payOnDelivery"
-                    >pay on delivery</label
-                  >
-                </div>
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  v-model="userDetails.email"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+                <small id="emailHelp" class="form-text text-muted"
+                  >We'll never share your email with anyone else.</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Billing address</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  v-model="userDetails.address"
+                  aria-describedby="address"
+                  placeholder=" Your address"
+                />
+              </div>
+              <div class="w-100">
+                <button
+                  :class="{ disabled: !isUserDetailsValid }"
+                  :disabled="!isUserDetailsValid"
+                  class="btn btn-primary btn-block"
+                >
+                  Confirm Order
+                </button>
               </div>
             </div>
-            <router-link
-              to="/message"
-              type="button"
-              class="btn btn-primary btn-lg btn-block"
-              >Confirm Order</router-link
-            >
           </div>
         </div>
       </div>
@@ -127,30 +102,38 @@ export default {
   data() {
     return {
       cartSummary: [],
-    };
+      userDetails: {
+        name: '',
+        number: '',
+        address: '',
+      },
+    }
   },
   computed: {
     allProductsInCart() {
-      return this.$store.state.products.cart;
+      return this.$store.state.products.cart
+    },
+    isUserDetailsValid() {
+      return Object.values(this.userDetails).every(Boolean)
     },
     totalPrice() {
-      return this.$store.getters.cartTotalPrice;
+      return this.$store.getters.cartTotalPrice
     },
   },
   methods: {
     increaseQty(product) {
-      this.$store.dispatch("addToCart", product);
+      this.$store.dispatch('addToCart', product)
     },
     decreaseQty(product) {
-      this.$store.dispatch("decreaseItemQty", product);
+      this.$store.dispatch('decreaseItemQty', product)
     },
   },
   mounted() {
-    this.cartSummary = this.$store.state.products.cart;
+    this.cartSummary = this.$store.state.products.cart
     // console.log("Cart Summ", this.cartSummary[0].product.images.small);
-    console.log(this.$store.state.products.cart);
+    console.log(this.$store.state.products.cart)
   },
-};
+}
 </script>
 
 <style scoped>
