@@ -1,15 +1,19 @@
 <template>
   <div class="card product-card text-left mt-2">
-    <router-link :to="{name:'product', params:{id:product.id}}">
+    <router-link :to="{ name: 'product', params: { id: product.id } }">
       <img class="card-img-top w-100" :src="product.images.large" alt />
     </router-link>
     <div class="card-body bg-dark">
       <h5 class="card-title">
-        <router-link :to="{name:'product', params:{id:product.id}}">{{product.name}}</router-link>
+        <router-link :to="{ name: 'product', params: { id: product.id } }">{{
+          product.name
+        }}</router-link>
       </h5>
       <p class="card-text price d-flex">
-        <strong>$ {{product.unit_price}}</strong>
-        <button @click="addToCart" class="btn btn-sm btn-primary">Add to cart</button>
+        <strong>$ {{ product.unit_price }}</strong>
+        <button @click="addToCart" class="btn btn-sm btn-primary">
+          Add to cart
+        </button>
       </p>
     </div>
   </div>
