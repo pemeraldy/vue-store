@@ -10,15 +10,17 @@
           class="d-flex product-wrap mb-3"
         >
           <div class="product-img">
-            <!-- <img :src="product.images.medium" /> -->
+            <img :src="product.product.images.medium" />
           </div>
           <div class="product-details d-flex align-items-center">
-            <div class="product-name">{{product.name}}</div>
+            <div class="product-name">{{ product.name }}</div>
             <div class="product-quantity d-flex">
-              <span class="minus">-</span>
-              <span class="quantity">{{product.quantity}}</span>
-              <span @click="increaseQty(product)" class="plus">+</span>
-              <div class="sub-total">$2000</div>
+              <span @click="decreaseQty(product)" class="minus">-</span>
+              <span class="quantity">{{ product.quantity }}</span>
+              <span @click="increaseQty(product)" class="p-4 primary plus"
+                >+</span
+              >
+              <div class="sub-total">TODO:SUBTOTAL</div>
             </div>
           </div>
         </div>
@@ -28,14 +30,16 @@
           <div class="col-6"></div>
           <div class="col-6">
             <div class="totals">
-              <h3>Sub Total : ${{totalPrice}}</h3>
+              <h3>Sub Total : ${{ totalPrice }}</h3>
               <h3>Delivery : $0</h3>
-              <h2>Total: ${{totalPrice}}</h2>
+              <h2>Total: ${{ totalPrice }}</h2>
             </div>
           </div>
         </div>
         <div>
-          <button class="btn btn-primary">Continue Shopping</button>
+          <button class="btn btn-primary">
+            <router-link to="/" class="dark">Continue Shopping</router-link>
+          </button>
         </div>
       </div>
       <!-- Billing Details -->
@@ -65,7 +69,12 @@
                   </label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="pickUp" name="delivery" class="custom-control-input" />
+                  <input
+                    type="radio"
+                    id="pickUp"
+                    name="delivery"
+                    class="custom-control-input"
+                  />
                   <label class="custom-control-label" for="pickUp">
                     Or pickup at the
                     <i class="fas fa-chair-office"></i>office
@@ -83,7 +92,9 @@
                     class="custom-control-input"
                     checked
                   />
-                  <label class="custom-control-label" for="cardPayment">Cards</label>
+                  <label class="custom-control-label" for="cardPayment"
+                    >Cards</label
+                  >
                 </div>
                 <div class="custom-control custom-radio">
                   <input
@@ -92,7 +103,9 @@
                     name="payment"
                     class="custom-control-input"
                   />
-                  <label class="custom-control-label" for="payOnDelivery">pay on delivery</label>
+                  <label class="custom-control-label" for="payOnDelivery"
+                    >pay on delivery</label
+                  >
                 </div>
               </div>
             </div>
@@ -100,7 +113,8 @@
               to="/message"
               type="button"
               class="btn btn-primary btn-lg btn-block"
-            >Confirm Order</router-link>
+              >Confirm Order</router-link
+            >
           </div>
         </div>
       </div>
@@ -110,6 +124,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      cartSummary: [],
+    };
+  },
   computed: {
     allProductsInCart() {
       return this.$store.state.products.cart;
@@ -119,10 +138,17 @@ export default {
     },
   },
   methods: {
-    increaseQty(a) {
-      this.$store.dispatch("increaseItemQty", a);
-      console.log(a);
+    increaseQty(product) {
+      this.$store.dispatch("addToCart", product);
     },
+    decreaseQty(product) {
+      this.$store.dispatch("decreaseItemQty", product);
+    },
+  },
+  mounted() {
+    this.cartSummary = this.$store.state.products.cart;
+    // console.log("Cart Summ", this.cartSummary[0].product.images.small);
+    console.log(this.$store.state.products.cart);
   },
 };
 </script>
