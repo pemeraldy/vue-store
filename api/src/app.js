@@ -93,6 +93,15 @@ app.get("/categories", (_req, res) => {
     return res.json(cats);
 });
 
+app.post("/payment", (req, res)=>{
+    const userDetails = req.body
+    db.get('users')
+        .push({ id: nanoid(), ...userDetails })
+        .write()
+    res.json({ success: true })
+})
+
+
 app.get("*", (_, res) => {
     return res.status(404);
 });
