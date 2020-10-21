@@ -1,33 +1,6 @@
 {
   "products": [
     {
-      "name": "Men Women Silicone Watch Band Outdoor Wristwatch Strap Replacement For Apple Watch DJA99",
-      "brand": "apple",
-      "images": {
-        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
-        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
-      },
-      "categories": [
-        "smartwatches",
-        "digital",
-        "analogue"
-      ],
-      "gender": "unisex",
-      "unit_price": "8760",
-      "product_details": {
-        "instock": 20,
-        "weight": "0.4g",
-        "material": "rubber",
-        "variation": [],
-        "colors": [
-          "white",
-          "blue"
-        ]
-      },
-      "id": "3SBW64GEY-gWFQ-lzSQVe"
-    },
-    {
       "id": "3SBW64GEY-eWFQ-lzSVYe",
       "name": "Apple Watch Band Apple Watch 4 Digital",
       "brand": "apple",
@@ -58,6 +31,34 @@
           "gold"
         ]
       }
+    },
+    {
+      "name": "Men Women Silicone Watch Band Outdoor Wristwatch Strap Replacement For Apple Watch DJA99",
+      "brand": "apple",
+      "images": {
+        "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
+        "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/women/casio-women_pcrpgn.jpg",
+        "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/women/casio-women_pcrpgn.jpg"
+      },
+      "categories": [
+        "adults",
+        "smartwatches",
+        "digital",
+        "analogue"
+      ],
+      "gender": "unisex",
+      "unit_price": "8760",
+      "product_details": {
+        "instock": 20,
+        "weight": "0.4g",
+        "material": "rubber",
+        "variation": [],
+        "colors": [
+          "white",
+          "blue"
+        ]
+      },
+      "id": "3SBW64GEY-gWFQ-lzSQVe"
     },
     {
       "name": "G Style Shock Alike Waterproof Outdoor Sports Watches Men",
@@ -138,6 +139,20 @@
         ]
       },
       "id": "0ApLQ-S7pQEdXiQ8Zlq9z"
+    },
+    {
+      "id": "uGhf3RM-Xj_zGPwBIMGO5",
+      "name": "nksabckjasc",
+      "number": "ajsbckjabsksa",
+      "address": "khcskcbkackac",
+      "email": "m@m.com"
+    },
+    {
+      "id": "D698aQdQjWBnwer6_npQz",
+      "name": "nksabckjasc",
+      "number": "ajsbckjabsksa",
+      "address": "khcskcbkackac",
+      "email": "m@m.com"
     }
   ],
   "categories": [
@@ -216,46 +231,6 @@
       "name": "",
       "number": "",
       "address": ""
-    },
-    {
-      "id": "d_w4Dt37aR5pX7-TBhfUJ",
-      "name": "xsasc",
-      "number": "acascasc",
-      "email": "me@me.com",
-      "address": "sacknascacas",
-      "amount": 0
-    },
-    {
-      "id": "YZ2OqGVQsW5fINj3d1zXG",
-      "name": "mary swift",
-      "number": "09089765534",
-      "email": "maryMag@gmail.ru",
-      "address": "Planet Earth",
-      "amount": 15760
-    },
-    {
-      "id": "qAbQYGFaOL8vt8MxaIG4I",
-      "name": "",
-      "number": "",
-      "email": "",
-      "address": "",
-      "amount": 15760
-    },
-    {
-      "id": "lSBcUFvQtyibEHb_PMnwi",
-      "name": " acasm",
-      "number": "25458788998",
-      "email": "me@mail.com",
-      "address": "dncjdskcksdjcsdc",
-      "amount": ""
-    },
-    {
-      "id": "YL3XDuOcaLatjQhnieTBG",
-      "name": "Ahmed Musa",
-      "number": "080893243423",
-      "email": "me@mail.com",
-      "address": "Home With home",
-      "amount": 3740
     }
   ]
 }

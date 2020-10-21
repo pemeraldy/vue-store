@@ -4,16 +4,24 @@
       <div class="col-md-8">
         <h3 class="mb-4">Your Order Breakdown</h3>
         <hr />
-        <div v-for="product in allProductsInCart" :key="product.id" class="d-flex product-wrap mb-3 justify-between">
+        <div
+          v-for="product in allProductsInCart"
+          :key="product.id"
+          class="d-flex product-wrap mb-3 justify-between"
+        >
           <div class="product-img w-50">
             <img :src="product.product.images.medium" />
           </div>
           <div class="product-details d-flex align-items-center">
             <!-- <div class="product-name">{{ product.name }}</div> -->
             <div class="product-quantity d-flex align-items-center ">
-              <button @click="decreaseQty(product)" class="minus">&minus;</button>
+              <button @click="decreaseQty(product)" class="minus">
+                &minus;
+              </button>
               <span class="quantity">{{ product.quantity }}</span>
-              <button @click="increaseQty(product)" class=" primary plus">&plus;</button>
+              <button @click="increaseQty(product)" class=" primary plus">
+                &plus;
+              </button>
             </div>
           </div>
         </div>
@@ -30,9 +38,9 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-primary">
-            <router-link to="/" class="dark">Continue Shopping</router-link>
-          </button>
+          <router-link tag="button" to="/" class="btn btn-primary"
+            >Continue Shopping</router-link
+          >
         </div>
       </div>
       <!-- Billing Details -->
@@ -41,21 +49,26 @@
           <div class="card-header">
             <h3 class="card-title text-center">Billing Details</h3>
           </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Full Name</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="userDetails.name"
-                aria-describedby="name"
-                placeholder=" Your Name"
-              />
-            </div>
+          <form @submit.prevent="sumitDetails" class="card-body">
             <div class="details">
               <div class="form-group">
+                <label for="exampleInputEmail1">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="userDetails.name"
+                  aria-describedby="name"
+                  placeholder=" Your Name"
+                />
+              </div>
+              <div class="form-group">
                 <label for="exampleInputEmail1">Phone Number</label>
-                <input type="email" class="form-control" v-model="userDetails.number" placeholder="Your Number" />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="userDetails.number"
+                  placeholder="Your Number"
+                />
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
@@ -80,17 +93,38 @@
                   placeholder=" Your address"
                 />
               </div>
-              <div class="w-100">
-                <button
-                  :class="{ disabled: !isUserDetailsValid }"
-                  :disabled="!isUserDetailsValid"
-                  class="btn btn-primary btn-block"
-                >
-                  Confirm Order
-                </button>
+
+              <div v-if="paymentError" class="w-100">
+                <div class="alert alert-dismissible alert-warning">
+                  <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                  </button>
+                  <h4 class="alert-heading text-center">Oops!</h4>
+                  <p class="mb-0">{{ paymentError }}</p>
+                </div>
               </div>
+              <!-- <button
+                :class="{ disabled: !isUserDetailsValid }"
+                :disabled="!isUserDetailsValid"
+                class="btn btn-primary btn-block"
+              >
+                Confirm Order
+              </button> -->
+              <paystack
+                :class="{ disabled: !isUserDetailsValid }"
+                :disabled="!isUserDetailsValid"
+                class="btn btn-primary btn-block"
+                :amount="userDetails.amount * 100"
+                :email="userDetails.email"
+                :paystackkey="publicKey"
+                :reference="reference"
+                :callback="processPayment"
+                :close="close"
+              >
+                Make Payment
+              </paystack>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -98,42 +132,78 @@
 </template>
 
 <script>
+import purchasePayment from "../api/purchase";
+import paystack from "vue-paystack";
+
 export default {
+  components: {
+    paystack,
+  },
   data() {
     return {
       cartSummary: [],
       userDetails: {
-        name: '',
-        number: '',
-        address: '',
+        name: "",
+        number: "",
+        email: "",
+        address: "",
+        amount: this.$store.getters.cartTotalPrice,
       },
-    }
+      publicKey: "sk_test_32180d2de64f26b8588694606551c88418fbe0de",
+      paymentError: null,
+    };
   },
   computed: {
+    reference() {
+      let text = "";
+      let possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (let i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    },
     allProductsInCart() {
-      return this.$store.state.products.cart
+      return this.$store.state.products.cart;
     },
     isUserDetailsValid() {
-      return Object.values(this.userDetails).every(Boolean)
+      return Object.values(this.userDetails).every(Boolean);
     },
     totalPrice() {
-      return this.$store.getters.cartTotalPrice
+      return this.$store.getters.cartTotalPrice;
     },
   },
   methods: {
     increaseQty(product) {
-      this.$store.dispatch('addToCart', product)
+      this.$store.dispatch("addToCart", product);
     },
     decreaseQty(product) {
-      this.$store.dispatch('decreaseItemQty', product)
+      this.$store.dispatch("decreaseItemQty", product);
+    },
+    async sumitDetails() {
+      try {
+        const resp = await purchasePayment.purchase(this.userDetails);
+        if (!resp) {
+          console.log("issues");
+          return;
+        }
+        Object.keys(this.userDetails).forEach((value) => {
+          this.userDetails[value] = "";
+        });
+        // window.location.href = "";
+        return resp.data;
+      } catch (error) {
+        this.paymentError = "Payment server down, please try again";
+        console.log(error);
+      }
+    },
+    processPayment: () => {
+      window.alert("Payment recieved");
+    },
+    close: () => {
+      console.log("You closed checkout page");
     },
   },
-  mounted() {
-    this.cartSummary = this.$store.state.products.cart
-    // console.log("Cart Summ", this.cartSummary[0].product.images.small);
-    console.log(this.$store.state.products.cart)
-  },
-}
+};
 </script>
 
 <style scoped>

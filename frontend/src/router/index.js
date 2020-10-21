@@ -28,7 +28,7 @@ const routes = [
     path: '/message',
     name: 'message',
     component: Message
-  }
+  },    
 ]
 
 const router = new VueRouter({

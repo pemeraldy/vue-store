@@ -6,16 +6,22 @@
     <div class="card-body bg-dark d-flex flex-column">
       <h5 class="card-title flex-1 pb-2">
         <router-link :to="{ name: 'product', params: { id: product.id } }">{{
-          product.name.length > 50 ? product.name.slice(0, 50).concat('...') : product.name
+          product.name.length > 50
+            ? product.name.slice(0, 50).concat("...")
+            : product.name
         }}</router-link>
       </h5>
-      
+
       <div class="card-text price d-flex align-items-center mt-auto">
         <strong>$ {{ product.unit_price }}</strong>
-        <button v-if="!isInCart" @click="addToCart" class="btn btn-sm btn-primary">
+        <button
+          v-if="!isInCart"
+          @click="addToCart"
+          class="btn btn-sm btn-primary"
+        >
           Add to cart
         </button>
-        <router-link v-else  to="/checkout"   class="btn btn-sm btn-primary">
+        <router-link v-else to="/checkout" class="btn btn-sm btn-primary">
           Checkout &nbsp; &rarr;
         </router-link>
       </div>
@@ -28,13 +34,13 @@ export default {
   props: {
     product: {
       type: Object,
-      default: () =>({})
+      default: () => ({}),
     },
   },
-  computed:{
-    isInCart(){
-    return this.$store.getters[`isInCart`](this.product.id)
-    }
+  computed: {
+    isInCart() {
+      return this.$store.getters[`isInCart`](this.product.id);
+    },
   },
   data() {
     return {
