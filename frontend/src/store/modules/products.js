@@ -4,9 +4,13 @@ const state = {
   loadingProducts: false,
   products: [],
   cart: [],
+  search: ''
 }
 
 const getters = {
+  getSearch(state){
+    return state.search
+  },
   isLoadingProducts(state) {
     return state.loadingProducts
   },
@@ -73,6 +77,9 @@ const actions = {
 }
 
 const mutations = {
+  SET_SEARCH: (state, search) => {
+    state.search = search
+  },
   SET_LOADING_PRODUCTS: (state, loading = false) => {
     state.loadingProducts = loading
   },

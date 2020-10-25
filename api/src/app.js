@@ -31,7 +31,13 @@ app.get("/products", (req, res) => {
     let data = [];
     let query = db.get("products");
     console.log(req.query)
-    let { category,sort,gender } = req.query;
+    let { category,sort,gender,search } = req.query;
+    if (search) {
+        query = query.filter((item) => {
+            return item.name.toLowerCase().includes(search) || item.brand.includes(search) || item.categories.join(',').includes(search)
+        });
+    }
+
     if (category) {
         categories = category.split(",");
         query = query.filter((item) => {
