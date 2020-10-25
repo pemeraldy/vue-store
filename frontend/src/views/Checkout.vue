@@ -49,7 +49,7 @@
           <div class="card-header">
             <h3 class="card-title text-center">Billing Details</h3>
           </div>
-          <form @submit.prevent="sumitDetails" class="card-body">
+          <form @submit.prevent class="card-body">
             <div class="details">
               <div class="form-group">
                 <label for="exampleInputEmail1">Full Name</label>
@@ -132,7 +132,6 @@
 </template>
 
 <script>
-import purchasePayment from "../api/purchase";
 import paystack from "vue-paystack";
 
 export default {
@@ -149,7 +148,7 @@ export default {
         address: "",
         amount: this.$store.getters.cartTotalPrice,
       },
-      publicKey: "sk_test_32180d2de64f26b8588694606551c88418fbe0de",
+      publicKey: "pk_test_c19036ff9f1bd2f6f642456c0c00a676e19738ee",
       paymentError: null,
     };
   },
@@ -171,6 +170,9 @@ export default {
     totalPrice() {
       return this.$store.getters.cartTotalPrice;
     },
+    isCartEmpty() {
+      return this.$store.getters["isCartEmpty"];
+    },
   },
   methods: {
     increaseQty(product) {
@@ -179,29 +181,20 @@ export default {
     decreaseQty(product) {
       this.$store.dispatch("decreaseItemQty", product);
     },
-    async sumitDetails() {
-      try {
-        const resp = await purchasePayment.purchase(this.userDetails);
-        if (!resp) {
-          console.log("issues");
-          return;
-        }
-        Object.keys(this.userDetails).forEach((value) => {
-          this.userDetails[value] = "";
-        });
-        // window.location.href = "";
-        return resp.data;
-      } catch (error) {
-        this.paymentError = "Payment server down, please try again";
-        console.log(error);
-      }
+
+    processPayment() {
+      console.log("heer");
+      this.$router.push({ name: "message" });
+      this.$store.dispatch("clearCart");
     },
-    processPayment: () => {
-      window.alert("Payment recieved");
-    },
-    close: () => {
+    close() {
       console.log("You closed checkout page");
     },
+  },
+  mounted() {
+    if (this.isCartEmpty) {
+      this.$router.push({ name: "store" });
+    }
   },
 };
 </script>

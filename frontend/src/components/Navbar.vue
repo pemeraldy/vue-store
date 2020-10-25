@@ -20,7 +20,10 @@
         </li>
 
         <li class="nav-item">
-          <router-link :class="{ disabled: $store.getters['isCartEmpty'] }" class="nav-link" to="/checkout"
+          <router-link
+            :class="{ disabled: $store.getters['isCartEmpty'] }"
+            class="nav-link"
+            to="/checkout"
             >Checkout</router-link
           >
         </li>
@@ -28,8 +31,13 @@
           <router-link to="/about" class="nav-link">About</router-link>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" />
+      <form @submit.prevent="handleSearch" class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="Search"
+          v-model="search"
+        />
       </form>
       <NavCart />
     </div>
@@ -37,12 +45,31 @@
 </template>
 
 <script>
-import NavCart from '@/components/NavCart'
+import NavCart from "@/components/NavCart";
 export default {
   components: {
     NavCart,
   },
-}
+  computed: {
+    search: {
+      get() {
+        return this.$store.getters[`getSearch`];
+      },
+      set(value) {
+        return this.$store.commit("SET_SEARCH", value);
+      },
+    },
+  },
+  methods: {
+    handleSearch() {
+      this.$router.push({
+        name: "store",
+        query: { ...this.$route.query, search: this.search },
+      });
+      this.$store.dispatch("getProducts", { search: this.search });
+    },
+  },
+};
 </script>
 
 <style scoped></style>
