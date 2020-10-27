@@ -31,7 +31,7 @@ app.get("/products", (req, res) => {
     let data = [];
     let query = db.get("products");
     console.log(req.query)
-    let { category,sort,gender,search } = req.query;
+    let { category,sort,gender,search,brand } = req.query;
     if (search) {
         query = query.filter((item) => {
             return item.name.toLowerCase().includes(search) || item.brand.includes(search) || item.categories.join(',').includes(search)
@@ -42,6 +42,13 @@ app.get("/products", (req, res) => {
         categories = category.split(",");
         query = query.filter((item) => {
             let intersection = _.intersection(item.categories, categories);
+            return intersection.length > 0;
+        });
+    }
+    if (brand) {
+        brand = brand.split(",");
+        query = query.filter((item) => {
+            let intersection = _.intersection(item.brand, brand);
             return intersection.length > 0;
         });
     }

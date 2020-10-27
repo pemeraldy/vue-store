@@ -1,0 +1,30 @@
+{
+    "name": "apple nike blue",
+    "brand": "apple",
+    "images": {
+      "small": "https://res.cloudinary.com/yopee/image/upload/w_50/h_50/v1598218934/ecomm/apples/apple-blue-w_ooxwfu.jpg", 
+      "medium": "https://res.cloudinary.com/yopee/image/upload/w_150/h_150/v1598218936/ecomm/apples/apple-blue-w_ooxwfu.jpg",
+      "large": "https://res.cloudinary.com/yopee/image/upload/w_300/h_300/v1598218936/ecomm/apples/apple-blue-w_ooxwfu.jpg"
+    },
+    "categories": [                
+      "digital",
+      "kids",
+      "adults",
+      "men",
+      "women"
+    ],
+    "gender": "unisex",
+    "unit_price": "22334",
+    "product_details": {
+      "instock": 20,
+      "weight": "0.4g",
+      "material": "rubber",
+      "variation": [],
+      "colors": [
+        "white",
+        "black"
+      ]
+    }
+}
+
+https://res.cloudinary.com/yopee/image/upload/v1598221050/ecomm/apples/apple-blue-w_ooxwfu.jpg

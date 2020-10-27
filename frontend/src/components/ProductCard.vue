@@ -1,8 +1,10 @@
 <template>
   <div class="card product-card text-left mt-2">
-    <router-link :to="`/product/${product.id}`">
-      <img class="card-img-top w-100" :src="product.images.large" alt />
-    </router-link>
+    <div class="img-wrap">
+      <router-link :to="`/product/${product.id}`">
+        <img class="card-img-top w-100" :src="product.images.large" alt />
+      </router-link>
+    </div>
     <div class="card-body bg-dark d-flex flex-column">
       <h5 class="card-title flex-1 pb-2">
         <router-link :to="{ name: 'product', params: { id: product.id } }">{{
@@ -13,7 +15,7 @@
       </h5>
 
       <div class="card-text price d-flex align-items-center mt-auto">
-        <strong>$ {{ product.unit_price }}</strong>
+        <strong>N {{ product.unit_price }}</strong>
         <button
           v-if="!isInCart"
           @click="addToCart"
@@ -63,6 +65,8 @@ export default {
 .card.product-card {
   width: 300px;
   margin: 2px;
+  display: flex;
+  justify-content: space-between;
 }
 .product-card:first-child {
   margin-left: 0;
@@ -78,5 +82,14 @@ h5.card-title a {
   color: #eaeaea;
   display: flex;
   justify-content: space-between;
+}
+.img-wrap {
+  max-height: 350px;
+}
+.card-title {
+  max-height: 150px;
+}
+.card-body {
+  max-height: 110px !important;
 }
 </style>
