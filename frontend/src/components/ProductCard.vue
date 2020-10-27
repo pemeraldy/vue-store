@@ -85,6 +85,7 @@ h5.card-title a {
 }
 .img-wrap {
   max-height: 350px;
+  overflow: hidden;
 }
 .card-title {
   max-height: 150px;
